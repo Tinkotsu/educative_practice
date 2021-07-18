@@ -4,7 +4,6 @@
 
 def find_substring(str1: str, pattern: str) -> str:
     matched, left, min_len, sub_str_start = 0, 0, len(str1) + 1, 0
-    result = ""
     chars_freq = {}
 
     for char in pattern:
@@ -19,7 +18,7 @@ def find_substring(str1: str, pattern: str) -> str:
             if chars_freq[right_char] == 0:
                 matched += 1
 
-        while matched == len(pattern):
+        while matched == len(chars_freq):
             if min_len > right - left + 1:
                 min_len = right - left + 1
                 sub_str_start = left
@@ -31,13 +30,13 @@ def find_substring(str1: str, pattern: str) -> str:
                     matched -= 1
                 chars_freq[left_char] += 1
 
-    return "" if min_len > len(str1) else str1[sub_str_start:sub_str_start + min_len + 1]
+    return "" if min_len > len(str1) else str1[sub_str_start:sub_str_start + min_len]
 
 
 def main():
     print(find_substring("aabdec", "abc"))
     print(find_substring("abdbca", "abc"))
     print(find_substring("adcad", "abc"))
-
+    print(find_substring("aa", "a"))
 
 main()
