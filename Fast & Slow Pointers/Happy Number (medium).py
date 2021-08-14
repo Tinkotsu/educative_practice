@@ -29,3 +29,8 @@ def main():
 
 
 main()
+
+"""
+Space complexity is O(logN)
+Time complexity is O(1)
+"""
